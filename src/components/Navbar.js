@@ -16,24 +16,36 @@ const Navbar = () => {
           </li>
         </div>
         <FaAlignRight className="hamburger" onClick={(e) => setOpen(!open)} />
-        <ul className="navbar-links">
+        <ul className={open ? "side-nav" : "navbar-links"}>
           <li>
-            <Link to="/" className="navbar-link">
+            <Link
+              to="/"
+              className={`${open ? "navbar-side-link" : "navbar-link"}`}
+            >
               Home
             </Link>
           </li>
           <li>
-            <Link to="/recipes" className="navbar-link">
+            <Link
+              to="/recipes"
+              className={`${open ? "navbar-side-link" : "navbar-link"}`}
+            >
               Recipes
             </Link>
           </li>
           <li>
-            <Link to="/calculator" className="navbar-link">
+            <Link
+              to="/calculator"
+              className={`${open ? "navbar-side-link" : "navbar-link"}`}
+            >
               Calorie Calculator
             </Link>
           </li>
           <li>
-            <Link to="/contact" className="navbar-link">
+            <Link
+              to="/contact"
+              className={`${open ? "navbar-side-link" : "navbar-link"}`}
+            >
               Contact
             </Link>
           </li>

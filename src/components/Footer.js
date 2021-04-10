@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="container grid">
         <div className="flex">
           <h1 className="navbar-logo m-y-2">StayHealthy</h1>
-          <p>Copyright &copy; 2020 Zachary Gray</p>
+          <p>Copyright &copy; 2021 Zachary Gray</p>
         </div>
         <div className="flex">
           <li>
@@ -23,7 +23,7 @@ const Footer = () => {
             </Link>
           </li>
           <li>
-            <Link to="/products" className="footer-links">
+            <Link to="/recipes" className="footer-links">
               Recipes
             </Link>
           </li>
@@ -34,18 +34,18 @@ const Footer = () => {
           </li>
         </div>
         <div className="socials">
-          <a href="#">
+          <div>
             <i className="fab fa-github fa-2x"></i>
-          </a>
-          <a href="#">
+          </div>
+          <div href="#">
             <i className="fab fa-facebook fa-2x"></i>
-          </a>
-          <a href="#">
+          </div>
+          <div href="#">
             <i className="fab fa-instagram fa-2x"></i>
-          </a>
-          <a href="#">
+          </div>
+          <div href="#">
             <i className="fab fa-twitter fa-2x"></i>
-          </a>
+          </div>
         </div>
       </div>
     </footer>

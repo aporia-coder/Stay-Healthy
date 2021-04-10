@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./styles/styles.scss";
 import { Route, Switch } from "react-router-dom";
 import AOS from "aos";
@@ -30,11 +30,9 @@ const theme = createMuiTheme({
 });
 
 function App() {
-  useEffect(() => {
-    AOS.init({
-      duration: 1500,
-    });
-  }, []);
+  AOS.init({
+    duration: 1500,
+  });
   return (
     <ThemeProvider theme={theme}>
       <Navbar />

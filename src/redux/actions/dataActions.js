@@ -1,5 +1,11 @@
 import axios from "axios";
-import { SET_LOADING, SET_RECIPES, SET_ERRORS, SET_CALORIES } from "../types";
+import {
+  SET_LOADING,
+  SET_RECIPES,
+  SET_ERRORS,
+  SET_CALORIES,
+  SET_BMR,
+} from "../types";
 
 export const getRecipesAction = (search, cals, diet, recipesPerPage) => (
   dispatch,
@@ -18,6 +24,26 @@ export const getRecipesAction = (search, cals, diet, recipesPerPage) => (
     .catch((err) => {
       dispatch({ type: SET_ERRORS });
     });
+};
+
+export const calculateBmrAction = (
+  gender,
+  bodyWeight,
+  heightCm,
+  age,
+  activityLevel,
+) => (dispatch) => {
+  if (gender === "Male") {
+    dispatch({
+      type: SET_BMR,
+      payload: 66 + 13.7 * bodyWeight + 5 * heightCm - 6.8 * age,
+    });
+  } else if (gender === "Female") {
+    dispatch({
+      type: SET_BMR,
+      payload: 655 + 9.6 * bodyWeight + 1.8 * heightCm - 4.7 * age,
+    });
+  }
 };
 
 export const calculateCaloriesAction = (bmr, activityLevel) => (dispatch) => {

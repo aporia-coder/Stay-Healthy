@@ -15,7 +15,7 @@ const SplitScreen = () => {
         onMouseEnter={() => setToggleLeft(true)}
         onMouseLeave={() => setToggleLeft(false)}
       >
-        <h5 className="split-title m-t-1">fruit</h5>
+        <h5 className="split-title">veggie</h5>
         {toggleLeft && <Overlay fruit={true} />}
       </div>
       <div
@@ -23,7 +23,7 @@ const SplitScreen = () => {
         onMouseEnter={() => setToggleRight(true)}
         onMouseLeave={() => setToggleRight(false)}
       >
-        <h5 className="split-title m-t-1">meat</h5>
+        <h5 className="split-title">meat</h5>
         {toggleRight && <Overlay veg={true} />}
       </div>
     </div>

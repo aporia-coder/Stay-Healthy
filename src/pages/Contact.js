@@ -11,7 +11,8 @@ const Contact = () => {
       <Hero>
         <Paper elevation={3} className="calorie-paper">
           <h5>CONTACT</h5>
-          <form>
+          <form data-netlify="true" name="contact-form" method="POST">
+            <input type="hidden" name="form-name" value="contact-form" />
             <div className="form-control">
               <input type="text" name="name" placeholder="Name" required />
             </div>
@@ -26,7 +27,7 @@ const Contact = () => {
                 required
               />
             </div>
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" type="submit">
               send
             </Button>
           </form>

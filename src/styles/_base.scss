@@ -3,15 +3,22 @@
   margin: 0;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   line-height: 1.6;
-  // letter-spacing: 0.1rem;
   overflow-x: hidden;
 }
 
 li {
   list-style: none;
+}
+
+i {
+  cursor: pointer;
 }
 
 a {

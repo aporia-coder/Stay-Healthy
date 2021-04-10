@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 
 // Components
 import Banner from "./Banner";
@@ -14,12 +13,12 @@ const HomeInfo = () => {
     <section className="section-info">
       <Banner
         title="about us"
-        subtitle="Whether you enjoy a delicious rib-eye steak, are completely vegan, or somewhere in between, here at StayHealthy we make it easy for you to find the most delicious, nutricous meals, all catered to your personal daily calory intake!Whether you enjoy a delicious rib-eye steak, are completely vegan, or somewhere in between, here at StayHealthy we make it easy for you to find the most delicious, nutricous meals, all catered to your personal daily calory intake!Whether you enjoy a delicious rib-eye steak, are completely vegan, or somewhere in between, here at StayHealthy we make it easy for you to find the most delicious, nutricous meals, all catered to your personal daily calory intake!"
+        subtitle="Whether you enjoy a delicious rib-eye steak, are completely vegan, or somewhere in between, here at StayHealthy we make it easy for you to find the most delicious, nutritious meals, all catered to your personal daily calory intake! All our meals are provided with health warnings for potential allergies, all their ingredients, aswell as their calorie content so you can be sure that all our recipes are the right ones for you."
         full={true}
       />
       <Banner
         title="our recipes"
-        subtitle="Whether you enjoy a delicious rib-eye steak, are completely vegan, or somewhere in between, here at StayHealthy we make it easy for you to find the most delicious, nutricous meals, all catered to your personal daily calory intake!"
+        subtitle="Search for specific ingredients, dietary preferences or recipes that fit your personal calorie requirements. Try our free recipe search functionality to find delicous meals especially tailored to your dietary needs."
       >
         <Button name="Our Recipes" className="btn" page="/recipes" />
       </Banner>
@@ -32,7 +31,7 @@ const HomeInfo = () => {
       <img src={pot} alt="Pot of food" className="image" data-aos="fade-up" />
       <Banner
         title="calorie calculator"
-        subtitle="Try our free calorie calculator to figure out the optimum calorific needs and get recipes tailored specifically to your calorie needs and dietary requirements!"
+        subtitle="Try our free calorie calculator to figure out your optimum calorific needs and get recipes tailored specifically to your calorie needs and dietary requirements!"
       >
         <Button name="Calorie Calculator" className="btn" page="/calculator" />
       </Banner>

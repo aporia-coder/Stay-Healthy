@@ -3,6 +3,7 @@ import {
   SET_RECIPES,
   SET_ERRORS,
   SET_MEAT,
+  SET_BMR,
   SET_CALORIES,
 } from "../types";
 
@@ -10,7 +11,8 @@ const initialState = {
   recipes: [],
   loading: false,
   error: "",
-  calories: "2000",
+  bmr: 0,
+  calories: 2000,
   meatPreference: "alcohol-free",
 };
 
@@ -38,6 +40,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         meatPreference: action.payload,
+      };
+    case SET_BMR:
+      return {
+        ...state,
+        bmr: action.payload,
       };
     case SET_CALORIES:
       return {

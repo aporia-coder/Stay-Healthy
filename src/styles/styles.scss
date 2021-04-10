@@ -61,15 +61,6 @@
     text-decoration: inherit;
     color: $pink-color;
   }
-  &-open {
-    height: 100vh;
-    width: 100%;
-    position: absolute;
-    overflow-y: hidden;
-    background-color: $blue-color;
-    z-index: 5;
-    // transform: translateX(-100%);
-  }
 }
 
 .searchbar {
@@ -81,10 +72,12 @@
 
 .hamburger {
   font-size: 2rem;
-  display: none;
   color: #da3b6bff;
   cursor: pointer;
-  z-index: 100;
+  z-index: 10;
+  right: 2%;
+  display: none;
+  position: fixed;
 }
 
 //Splitscreen
@@ -104,11 +97,11 @@
   &-left {
     @include flexCenterCol;
     transition: $splittransition;
-    position: relative;
     position: absolute;
     height: 100%;
     width: 50%;
     background: url(../assets/img/fruit.jpg) no-repeat center 10% / cover;
+
     &-hover {
       width: 51%;
     }
@@ -116,7 +109,6 @@
   &-right {
     @include flexCenterCol;
     transition: $splittransition;
-    position: relative;
     position: absolute;
     left: 50%;
     height: 100%;
@@ -149,7 +141,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  // background-color: rgba(0, 0, 0, 0.3);
   h5 {
     text-transform: uppercase;
     color: $blue-color;
@@ -158,17 +149,21 @@
     height: 2rem;
   }
   i {
-    font-size: 6rem;
+    font-size: 5rem;
     color: $blue-color;
+    margin-bottom: 2rem;
+    cursor: auto;
   }
 }
 
 .split-title {
-  text-transform: uppercase;
+  font-family: "Mr Dafoe", cursive;
+  text-transform: capitalize;
   color: $blue-color;
-  font-size: 2rem;
+  font-size: 4rem;
   font-weight: 600;
   height: 2rem;
+  margin-bottom: 4rem;
 }
 
 //Heros
@@ -200,47 +195,12 @@
   grid-template-rows: repeat(3, 30rem);
 }
 
-//Media Queries
-@media screen and (max-width: 1000px) {
-  .hamburger {
-    display: initial;
-    justify-self: flex-end;
-    margin-right: 2rem;
-  }
-
-  nav {
-    height: 100vh;
-    position: relative;
-  }
-
-  .navbar-links {
-    position: fixed;
-    background-color: $blue-color;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 100vh;
-    right: 0;
-  }
-  .split {
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: auto;
-    &-left {
-      grid-row: 1/2;
-      grid-column: initial;
-    }
-    &-right {
-      grid-row: 2/3;
-      grid-column: initial;
-    }
-  }
-}
-
 .calorie {
   &-paper {
     padding: 8rem;
+    @media screen and (max-width: 600px) {
+      padding: 5rem;
+    }
   }
   &-form {
     display: flex;
@@ -295,6 +255,9 @@
     padding: 1rem 2.5rem;
     border-top: 1px solid rgba(0, 0, 0, 0.2);
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    @media screen and (max-width: 650px) {
+      flex-direction: column;
+    }
   }
 }
 
@@ -325,6 +288,10 @@
   color: $blue-color;
   border: 3px solid $blue-color;
   transition: $maintransition;
+  &-search {
+    display: block;
+    align-self: center;
+  }
   &-secondary {
     @extend .btn;
     @include btnHover;
@@ -384,6 +351,7 @@ footer {
 .socials {
   color: #fff;
   @include flexCenter;
+  flex-wrap: wrap;
   i {
     margin: 0 10px;
     padding: 10px;
@@ -405,4 +373,63 @@ footer {
 
 .media-container {
   position: relative;
+}
+
+.side-nav {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  background-color: $blue-color;
+  width: 50%;
+  transition: $maintransition;
+}
+
+.navbar-side-link {
+  z-index: 20;
+  color: #f1f1f1;
+  font-size: 2.5rem;
+  transition: $maintransition;
+  &:hover {
+    color: $pink-color;
+  }
+}
+
+// Media Queries
+@media screen and (max-width: 900px) {
+  .split-left {
+    top: 0;
+    width: 100%;
+    height: 50%;
+    &:hover {
+      height: 51%;
+    }
+  }
+
+  .split-right {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    &:hover {
+      height: 52%;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .btn-search {
+    align-self: center;
+  }
+
+  .navbar-links {
+    visibility: hidden;
+  }
+
+  .hamburger {
+    display: block;
+  }
 }

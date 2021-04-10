@@ -6,7 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Hero from "../components/Hero";
 
 // Actions
-import { calculateCaloriesAction } from "../redux/actions/dataActions";
+import {
+  calculateCaloriesAction,
+  calculateBmrAction,
+} from "../redux/actions/dataActions";
 
 // Types
 import { SET_CALORIES } from "../redux/types";
@@ -24,21 +27,18 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
-import Typography from "@material-ui/core/Typography";
 
 const CalorieCalculator = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [bodyWeight, setBodyWeight] = useState(0);
   const [heightCm, setHeightCm] = useState(0);
-  const calories = useSelector((state) => state.calories);
-  // const [calories, setCalories] = useState(0);
-  const [age, setAge] = useState(26);
+  const { calories, bmr } = useSelector((state) => state);
+  const [age, setAge] = useState(0);
   const [gender, setGender] = useState("");
-  const [bodyFat, setBodyFat] = useState();
   const [activityLevel, setActivityLevel] = useState("");
   const genders = ["Male", "Female"];
-  const [bmr, setBmr] = useState(1600);
+  // const [bmr, setBmr] = useState(1600);
   const [open, setOpen] = useState(false);
   const activityLevelVals = [
     "Sedentary",
@@ -48,17 +48,9 @@ const CalorieCalculator = () => {
     "Very Active",
   ];
 
-  const calculateBmr = (gender, bodyWeight, heightCm, age, activityLevel) => {
-    if (gender == "Male") {
-      setBmr(66 + 13.7 * bodyWeight + 5 * heightCm - 6.8 * age);
-    } else if (gender == "Female") {
-      setBmr(655 + 9.6 * bodyWeight + 1.8 * heightCm - 4.7 * age);
-    }
-  };
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  useEffect(() => {
+    dispatch(calculateBmrAction(gender, bodyWeight, heightCm, age));
+  }, [gender, bodyWeight, heightCm, age, dispatch]);
 
   const handleClose = () => {
     setOpen(false);
@@ -66,8 +58,8 @@ const CalorieCalculator = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    calculateBmr(gender, bodyWeight, heightCm, age);
     dispatch(calculateCaloriesAction(bmr, activityLevel));
+    setOpen(true);
   };
 
   const handleRecipes = (e) => {
@@ -121,8 +113,16 @@ const CalorieCalculator = () => {
               <FormHelperText>Weight</FormHelperText>
             </FormControl>
             <FormControl>
+              <Input
+                required={true}
+                type="number"
+                onChange={(e) => setAge(e.target.value)}
+              />
+              <FormHelperText>Age</FormHelperText>
+            </FormControl>
+            <FormControl>
               <TextField
-                select
+                select={true}
                 value={gender}
                 helperText="Select your gender"
                 required={true}
@@ -137,7 +137,7 @@ const CalorieCalculator = () => {
             </FormControl>
             <FormControl>
               <Input
-                select
+                select="true"
                 value={heightCm}
                 helperText="Select your age"
                 required={true}
@@ -150,7 +150,7 @@ const CalorieCalculator = () => {
             </FormControl>
             <FormControl>
               <TextField
-                select
+                select={true}
                 value={activityLevel}
                 required={true}
                 helperText="Select activity level"
@@ -168,7 +168,6 @@ const CalorieCalculator = () => {
               color="primary"
               className="m-y-2"
               type="submit"
-              onClick={handleOpen}
             >
               calculate calories
             </Button>

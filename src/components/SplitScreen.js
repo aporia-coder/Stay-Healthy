@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-// import fruit from "../assets/img/fruit.jpg";
-// import veg from "../assets/img/veg.jpg";
 
 // Components
 import Overlay from "./Overlay";

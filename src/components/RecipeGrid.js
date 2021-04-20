@@ -40,8 +40,8 @@ const RecipeGrid = () => {
   let currentRecipes = recipes.slice(firstRecipeIndex, lastRecipeIndex);
 
   useEffect(() => {
-    dispatch(getRecipesAction(initialRequest, initialCalories, "alcohol-free"));
-  }, [dispatch]);
+    dispatch(getRecipesAction(initialRequest, initialCalories, meatPreference));
+  }, [dispatch, meatPreference]);
 
   useEffect(() => {
     setCurrentPage(1);

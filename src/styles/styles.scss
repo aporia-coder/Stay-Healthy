@@ -131,6 +131,9 @@
 
 .about {
   grid-column: 1 / 3;
+  @media screen and (max-width: 800px) {
+    grid-column: auto;
+  }
 }
 
 //Overlays
@@ -193,6 +196,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(3, 30rem);
+  @media screen and (max-width: 800px) {
+    grid-template-rows: repeat(5, 30rem);
+    grid-template-columns: 1fr;
+  }
 }
 
 .calorie {
